@@ -9,8 +9,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/mario-corral/go-xml/internal/gen"
-	"github.com/mario-corral/go-xml/xsd"
+	"github.com/adharaprojects/go-xml/internal/gen"
+	"github.com/adharaprojects/go-xml/xsd"
 )
 
 // A Config holds user-defined overrides and filters that are used when

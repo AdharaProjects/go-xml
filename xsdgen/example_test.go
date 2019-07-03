@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/mario-corral/go-xml/xsdgen"
+	"github.com/adharaprojects/go-xml/xsdgen"
 )
 
 func tmpfile() *os.File {

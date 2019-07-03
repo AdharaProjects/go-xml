@@ -1,6 +1,6 @@
 // Package commandline contains helper types for collecting
 // command-line arguments.
-package commandline // import "github.com/mario-corral/go-xml/internal/commandline"
+package commandline // import "github.com/adharaprojects/go-xml/internal/commandline"
 
 import (
 	"bytes"

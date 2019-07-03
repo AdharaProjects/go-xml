@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/mario-corral/go-xml/xmltree"
+	"github.com/adharaprojects/go-xml/xmltree"
 )
 
 func TestBooks(t *testing.T) {
