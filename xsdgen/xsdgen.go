@@ -545,6 +545,7 @@ type fieldOverride struct {
 	DefaultValue     string
 	Type             xsd.Type
 	Tag              string
+	IsPtr            bool
 }
 
 type nameGenerator struct {
@@ -681,7 +682,7 @@ func (cfg *Config) genComplexType(t *xsd.ComplexType) ([]spec, error) {
 		if el.Nillable || el.Optional {
 			options = ",omitempty"
 		}
-		tag := fmt.Sprintf(`xml:"%s %s%s"`, el.Name.Space, el.Name.Local, options)
+		tag := fmt.Sprintf(`xml:"%s%s"`, el.Name.Local, options)
 		base, err := cfg.expr(el.Type)
 		if err != nil {
 			return nil, fmt.Errorf("%s element %s: %v", t.Name.Local, el.Name.Local, err)
@@ -701,7 +702,14 @@ func (cfg *Config) genComplexType(t *xsd.ComplexType) ([]spec, error) {
 		}
 		if el.Plural {
 			base = &ast.ArrayType{Elt: base}
+		} else if _, ok := el.Type.(*xsd.ComplexType); ok {
+			base = &ast.StarExpr{X: base}
+		} else if _, ok := el.Type.(*xsd.SimpleType); ok {
+			base = &ast.StarExpr{X: base}
+		} else if nonTrivialBuiltin(el.Type) && (el.Nillable || el.Optional) {
+			base = &ast.StarExpr{X: base}
 		}
+
 		fields = append(fields, name, base, gen.String(tag))
 		if el.Default != "" || nonTrivialBuiltin(el.Type) {
 			typeName := cfg.exprString(el.Type)
@@ -713,6 +721,7 @@ func (cfg *Config) genComplexType(t *xsd.ComplexType) ([]spec, error) {
 				helperTypes = append(helperTypes, xsd.XMLName(h.xsdType))
 				typeName = h.name
 			}
+			_, isPtr := base.(*ast.StarExpr)
 			overrides = append(overrides, fieldOverride{
 				DefaultValue: el.Default,
 				FieldName:    name.(*ast.Ident).Name,
@@ -720,6 +729,7 @@ func (cfg *Config) genComplexType(t *xsd.ComplexType) ([]spec, error) {
 				Tag:          tag,
 				ToType:       typeName,
 				Type:         el.Type,
+				IsPtr:        isPtr,
 			})
 		}
 	}
@@ -814,7 +824,7 @@ func (cfg *Config) genComplexTypeMethods(t *xsd.ComplexType, overrides []fieldOv
 			}
 			overlay.T = (*T)(t)
 			{{range .Overrides}}
-			overlay.{{.FieldName}} = (*{{.ToType}})(&overlay.T.{{.FieldName}})
+			overlay.{{.FieldName}} = (*{{.ToType}})({{if not .IsPtr}}&{{end}}overlay.T.{{.FieldName}})
 			{{if .DefaultValue -}}
 			// overlay.{{.FieldName}} = {{.DefaultValue}}
 			{{end -}}
@@ -854,7 +864,7 @@ func (cfg *Config) genComplexTypeMethods(t *xsd.ComplexType, overrides []fieldOv
 			}
 			layout.T = (*T)(t)
 			{{- range .Overrides}}
-			layout.{{.FieldName}} = (*{{.ToType}})(&layout.T.{{.FieldName}})
+			layout.{{.FieldName}} = (*{{.ToType}})({{if not .IsPtr}}&{{end}}layout.T.{{.FieldName}})
 			{{end -}}
 
 			return e.EncodeElement(layout, start)
