@@ -1,3 +1,3 @@
-module github.com/mario-corral/go-xml
+module github.com/adharaprojects/go-xml
 
 go 1.12

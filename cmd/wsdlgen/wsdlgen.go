@@ -1,11 +1,11 @@
-package main // import "github.com/mario-corral/go-xml/cmd/wsdlgen"
+package main // import "github.com/adharaprojects/go-xml/cmd/wsdlgen"
 
 import (
 	"log"
 	"os"
 
-	"github.com/mario-corral/go-xml/wsdlgen"
-	"github.com/mario-corral/go-xml/xsdgen"
+	"github.com/adharaprojects/go-xml/wsdlgen"
+	"github.com/adharaprojects/go-xml/xsdgen"
 )
 
 func main() {

@@ -1,11 +1,11 @@
-[![GoDoc](https://godoc.org/github.com/mario-corral/go-xml?status.svg)](https://godoc.org/github.com/mario-corral/go-xml) [![Build Status](https://travis-ci.org/droyo/go-xml.svg?branch=master)](https://travis-ci.org/droyo/go-xml)
+[![GoDoc](https://godoc.org/github.com/adharaprojects/go-xml?status.svg)](https://godoc.org/github.com/adharaprojects/go-xml) [![Build Status](https://travis-ci.org/droyo/go-xml.svg?branch=master)](https://travis-ci.org/droyo/go-xml)
 
 ## Installation
 
 Requires go 1.9 or greater for golang.org/x/html dependency.
 
 ```
-go get github.com/mario-corral/go-xml/...
+go get github.com/adharaprojects/go-xml/...
 ```
 
 This repository contains a collection of Go packages for working

@@ -1,5 +1,5 @@
 // Package wsdl parses Web Service Definition Language documents.
-package wsdl // import "github.com/mario-corral/go-xml/wsdl"
+package wsdl // import "github.com/adharaprojects/go-xml/wsdl"
 
 import (
 	"bytes"
@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mario-corral/go-xml/xmltree"
+	"github.com/adharaprojects/go-xml/xmltree"
 )
 
 const (

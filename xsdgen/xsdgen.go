@@ -1,4 +1,4 @@
-package xsdgen // import "github.com/mario-corral/go-xml/xsdgen"
+package xsdgen // import "github.com/adharaprojects/go-xml/xsdgen"
 
 import (
 	"bytes"
@@ -11,10 +11,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mario-corral/go-xml/internal/dependency"
-	"github.com/mario-corral/go-xml/internal/gen"
-	"github.com/mario-corral/go-xml/xmltree"
-	"github.com/mario-corral/go-xml/xsd"
+	"github.com/adharaprojects/go-xml/internal/dependency"
+	"github.com/adharaprojects/go-xml/internal/gen"
+	"github.com/adharaprojects/go-xml/xmltree"
+	"github.com/adharaprojects/go-xml/xsd"
 )
 
 type orderedStringMap interface {

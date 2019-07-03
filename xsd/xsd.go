@@ -11,7 +11,7 @@
 //
 // The xsd package respects XML name spaces in schema documents, and can
 // parse schema documents that import or include other schema documents.
-package xsd // import "github.com/mario-corral/go-xml/xsd"
+package xsd // import "github.com/adharaprojects/go-xml/xsd"
 
 import (
 	"bytes"
@@ -20,7 +20,7 @@ import (
 	"io"
 	"regexp"
 
-	"github.com/mario-corral/go-xml/xmltree"
+	"github.com/adharaprojects/go-xml/xmltree"
 )
 
 const (

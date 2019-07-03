@@ -12,10 +12,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/mario-corral/go-xml/internal/gen"
-	"github.com/mario-corral/go-xml/xmltree"
-	"github.com/mario-corral/go-xml/xsd"
-	"github.com/mario-corral/go-xml/xsdgen"
+	"github.com/adharaprojects/go-xml/internal/gen"
+	"github.com/adharaprojects/go-xml/xmltree"
+	"github.com/adharaprojects/go-xml/xsd"
+	"github.com/adharaprojects/go-xml/xsdgen"
 )
 
 func glob(pat string) string {
