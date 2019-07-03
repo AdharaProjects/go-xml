@@ -3,7 +3,7 @@ package xsd
 import (
 	"encoding/xml"
 
-	"aqwari.net/xml/xmltree"
+	"github.com/mario-corral/go-xml/xmltree"
 )
 
 type elementKey struct {

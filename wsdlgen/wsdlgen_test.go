@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"aqwari.net/xml/xsdgen"
+	"github.com/mario-corral/go-xml/xsdgen"
 )
 
 type testLogger struct {
